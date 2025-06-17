@@ -1,0 +1,12 @@
+<!-- banking/templates/banking/deposit.html -->
+{% extends "accounts/base.html" %}
+
+{% block content %}
+  <h2>Deposit Funds</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Deposit</button>
+  </form>
+  <a href="{% url 'banking:view_balance' %}">Back to Balance</a>
+{% endblock %}

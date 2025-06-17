@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Support Tickets</title>
+</head>
+<body>
+    <h1>My Support Tickets</h1>
+
+    {% if tickets %}
+        <table>
+            <tr>
+                <th>Subject</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Response</th>
+                <th>Submitted On</th>
+                <th>Last Updated</th>
+            </tr>
+            {% for ticket in tickets %}
+            <tr>
+                <td>{{ ticket.subject }}</td>
+                <td>{{ ticket.description }}</td>
+                <td>{{ ticket.status }}</td>
+                <td>{{ ticket.response|default:"No response yet" }}</td>
+                <td>{{ ticket.created_at }}</td>
+                <td>{{ ticket.updated_at }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>You have not submitted any support tickets yet.</p>
+    {% endif %}
+</body>
+</html>

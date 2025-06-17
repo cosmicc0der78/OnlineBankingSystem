@@ -1,0 +1,12 @@
+<!-- accounts/templates/accounts/profile.html -->
+{% extends "accounts/base.html" %}
+{% block content %}
+<h2>Your Profile</h2>
+<p><strong>Username:</strong> {{ request.user.username }}</p>
+<p><strong>Email:</strong> {{ request.user.email }}</p>
+<p><strong>Contact Number:</strong> {{ request.user.profile.contact_number }}</p>
+<p><strong>Address:</strong> {{ request.user.profile.address }}</p>
+<p><strong>Date of Birth:</strong> {{ request.user.profile.date_of_birth }}</p>
+
+<a href="{% url 'accounts:profile_edit' %}">Edit Profile</a>
+{% endblock %}

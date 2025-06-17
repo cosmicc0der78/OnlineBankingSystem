@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ticket Detail</title>
+</head>
+<body>
+    <h1>Ticket: {{ ticket.subject }}</h1>
+    <p>Description: {{ ticket.description }}</p>
+    <p>Status: {{ ticket.status }}</p>
+
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" name="action" value="mark_in_progress">Mark as In Progress</button>
+        <button type="submit" name="action" value="close">Close Ticket</button>
+    </form>
+</body>
+</html>

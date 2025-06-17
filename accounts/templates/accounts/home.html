@@ -1,0 +1,43 @@
+<!-- accounts/templates/accounts/home.html -->
+{% extends "accounts/base.html" %}
+
+{% block content %}
+  <h2>Welcome, {{ user.username }}!</h2>
+  {% if messages %}
+    <div>
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    </div>
+  {% endif %}
+
+
+  <div class="account-overview">
+    <h3>Account Summary</h3>
+    <p><strong>Account Balance:</strong> ${{ account.balance }}</p>
+    <p><strong>Account Number:</strong> {{ user.profile.account_number }}</p>
+  </div>
+
+  
+  <div class="quick-actions">
+    <h3>Quick Actions</h3>
+    <ul>
+      <li><a href="{% url 'transactions:initiate_transfer' %}">Transfer Funds</a></li>
+      <li><a href="{% url 'loans:loan_application' %}">Apply Loan</a></li>
+      <li><a href="{% url 'loans:loan_list' %}">Check the status for the applied loans</a></li>  
+      <li><a href="{% url 'support:submit_ticket' %}">Customer Support</a>
+      <li><a href="{% url 'support:my_tickets' %}">View my Support Tickets</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="notifications">
+    <h3>Important Alerts</h3>
+    <ul>
+      <li>Your recent loan application has been approved!</li>
+    </ul>
+  </div>
+
+  <div class="logout">
+  </div>
+{% endblock %}

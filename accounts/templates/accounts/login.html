@@ -1,0 +1,16 @@
+<!-- accounts/templates/accounts/login.html -->
+<form method="post">
+    {% csrf_token %}
+    
+    {% if login_form %}
+        {{ login_form.as_p }}
+        <button type="submit">Login</button>
+    {% elif otp_form %}
+        <p>OTP sent to email. Please enter OTP.</p>
+        {{ otp_form.as_p }}
+        <p>type 3773.</p>
+        <button type="submit">Verify OTP</button>
+    {% endif %}
+    
+    <p>Don't have an account? <a href="{% url 'accounts:register' %}">Register here</a></p>
+</form>

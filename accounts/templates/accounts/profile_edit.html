@@ -1,0 +1,12 @@
+<!-- accounts/templates/accounts/profile_edit.html -->
+{% extends "accounts/base.html" %}
+
+{% block content %}
+  <h2>Update Profile</h2>
+  <form method="POST">
+    {% csrf_token %}
+    {{ user_form.as_p }}  <!-- Display the user update form fields -->
+    {{ profile_form.as_p }}  <!-- Display the profile update form fields -->
+    <button type="submit">Save Changes</button>
+  </form>
+{% endblock %}

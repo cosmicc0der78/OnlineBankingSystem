@@ -1,0 +1,44 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banking System</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="{% url 'accounts:home' %}">Home</a> |
+            <a href="{% url 'support:notifications' %}">
+                Notifications
+                {% if unread_count > 0 %}
+                    <span class="badge">{{ unread_count }}</span>
+                {% endif %}
+            </a> |
+            <a href="{% url 'accounts:profile' %}">Profile</a> |
+            <a href="{% url 'banking:deposit' %}">Deposit</a> |
+            <a href="{% url 'banking:withdraw' %}">Withdraw</a> |
+            <a href="{% url 'transactions:transaction_history' %}">View History</a> |
+            <a href="{% url 'transactions:initiate_transfer' %}">Transfer Money</a> |
+            <a href="{% url 'loans:loan_list' %}">Loan List</a> |
+            <a href="{% url 'support:my_tickets' %}">My Tickets</a> |
+        </nav>
+    </header>
+    <main>
+        <!-- Display any messages -->
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                <div class="alert alert-danger">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>
