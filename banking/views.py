@@ -15,30 +15,3 @@ def view_balance(request):
     except Account.DoesNotExist:
         return render(request, 'banking/no_account.html')  # This is where the error occurred
     
-@login_required
-def deposit(request):
-    account = Account.objects.get(user=request.user)
-    if request.method == 'POST':
-        form = DepositForm(request.POST)
-        if form.is_valid():
-            amount = form.cleaned_data['amount']
-            account.deposit(amount)
-            return redirect('banking:view_balance')
-    else:
-        form = DepositForm()
-    return render(request, 'banking/deposit.html', {'form': form})
-
-@login_required
-def withdraw(request):
-    account = Account.objects.get(user=request.user)
-    if request.method == 'POST':
-        form = WithdrawalForm(request.POST)
-        if form.is_valid():
-            amount = form.cleaned_data['amount']
-            if account.withdraw(amount):
-                return redirect('banking:view_balance')
-            else:
-                return HttpResponse("Insufficient funds", status=400)
-    else:
-        form = WithdrawalForm()
-    return render(request, 'banking/withdraw.html', {'form': form})

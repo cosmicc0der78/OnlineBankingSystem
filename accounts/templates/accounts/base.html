@@ -1,11 +1,15 @@
 <!-- templates/base.html -->
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Banking System</title>
+    <link rel="stylesheet" href="{% static 'accounts/styles.css' %}" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <header>
         <nav>
@@ -16,9 +20,7 @@
                     <span class="badge">{{ unread_count }}</span>
                 {% endif %}
             </a> |
-            <a href="{% url 'accounts:profile' %}">Profile</a> |
-            <a href="{% url 'banking:deposit' %}">Deposit</a> |
-            <a href="{% url 'banking:withdraw' %}">Withdraw</a> |
+            <a href="{% url 'accounts:profile' %}">Profile</a> ||
             <a href="{% url 'transactions:transaction_history' %}">View History</a> |
             <a href="{% url 'transactions:initiate_transfer' %}">Transfer Money</a> |
             <a href="{% url 'loans:loan_list' %}">Loan List</a> |

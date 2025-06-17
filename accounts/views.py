@@ -11,6 +11,18 @@ from support.models import Notification  # Import Notification model
 from .forms import LoginForm, RegisterForm, OTPForm, ProfileUpdateForm, UserUpdateForm
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse  # Import reverse to handle URL resolution
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render
+
+@login_required
+def home(request):
+    account = request.user.account  # or however you get the account info
+    context = {
+        'account': account,
+        # other context variables
+    }
+    return render(request, 'accounts/home.html', context)
+
 
 def login_view(request):
     if request.method == 'POST':

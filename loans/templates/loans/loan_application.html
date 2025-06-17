@@ -1,15 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Loan Application</title>
-</head>
-<body>
-    <h1>Loan Application Form</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Submit Application</button>
-    </form>
-</body>
-</html>
+{% extends "accounts/base.html" %}
+
+{% block content %}
+  <h2>Loan Application Form</h2>
+
+  {% if form.errors %}
+    <div class="form-errors" style="color: red;">
+      {{ form.errors }}
+    </div>
+  {% endif %}
+
+  <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Submit Application</button>
+  </form>
+{% endblock %}

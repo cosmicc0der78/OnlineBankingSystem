@@ -1,35 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>My Support Tickets</title>
-</head>
-<body>
-    <h1>My Support Tickets</h1>
+{% extends "accounts/base.html" %}
 
-    {% if tickets %}
-        <table>
+{% block content %}
+  <h2>My Support Tickets</h2>
+
+  {% if tickets %}
+    <div class="table-container">
+      <table class="styled-table">
+        <thead>
+          <tr>
+            <th>Subject</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Response</th>
+            <th>Submitted On</th>
+            <th>Last Updated</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for ticket in tickets %}
             <tr>
-                <th>Subject</th>
-                <th>Description</th>
-                <th>Status</th>
-                <th>Response</th>
-                <th>Submitted On</th>
-                <th>Last Updated</th>
+              <td>{{ ticket.subject }}</td>
+              <td>{{ ticket.description }}</td>
+              <td>{{ ticket.status }}</td>
+              <td>{{ ticket.response|default:"No response yet" }}</td>
+              <td>{{ ticket.created_at|date:"Y-m-d H:i" }}</td>
+              <td>{{ ticket.updated_at|date:"Y-m-d H:i" }}</td>
             </tr>
-            {% for ticket in tickets %}
-            <tr>
-                <td>{{ ticket.subject }}</td>
-                <td>{{ ticket.description }}</td>
-                <td>{{ ticket.status }}</td>
-                <td>{{ ticket.response|default:"No response yet" }}</td>
-                <td>{{ ticket.created_at }}</td>
-                <td>{{ ticket.updated_at }}</td>
-            </tr>
-            {% endfor %}
-        </table>
-    {% else %}
-        <p>You have not submitted any support tickets yet.</p>
-    {% endif %}
-</body>
-</html>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <p>You have not submitted any support tickets yet.</p>
+  {% endif %}
+{% endblock %}

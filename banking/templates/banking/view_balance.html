@@ -5,6 +5,4 @@
   <h2>Your Account Balance</h2>
   <p><strong>Account Type:</strong> {{ account.account_type }}</p>
   <p><strong>Balance:</strong> ${{ account.balance }}</p>
-  <a href="{% url 'banking:deposit' %}">Deposit Funds</a><br>
-  <a href="{% url 'banking:withdraw' %}">Withdraw Funds</a>
 {% endblock %}

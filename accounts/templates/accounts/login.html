@@ -1,16 +1,145 @@
-<!-- accounts/templates/accounts/login.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Login - Banking System</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+
+<style>
+  /* Reset & base */
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #222;
+  }
+
+  /* Container Card */
+  form {
+    background: #fff;
+    padding: 40px 35px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    width: 100%;
+    max-width: 400px;
+    transition: box-shadow 0.3s ease;
+  }
+  form:hover {
+    box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+  }
+
+  /* Heading */
+  form h1 {
+    margin-bottom: 25px;
+    font-weight: 700;
+    color: #0a3d62;
+    text-align: center;
+    letter-spacing: 1.5px;
+  }
+
+  /* Paragraphs */
+  form p {
+    margin-bottom: 15px;
+    font-size: 1rem;
+  }
+
+  /* Inputs */
+  input[type="text"],
+  input[type="password"],
+  input[type="number"],
+  input[type="email"] {
+    width: 100%;
+    padding: 14px 16px;
+    margin-bottom: 20px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  input[type="text"]:focus,
+  input[type="password"]:focus,
+  input[type="number"]:focus,
+  input[type="email"]:focus {
+    border-color: #0a3d62;
+    box-shadow: 0 0 8px rgba(10, 61, 98, 0.5);
+    outline: none;
+  }
+
+  /* Buttons */
+  button {
+    width: 100%;
+    background-color: #0a3d62;
+    color: white;
+    padding: 14px 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease;
+  }
+  button:hover {
+    background-color: #144a85;
+  }
+
+  /* Links */
+  a {
+    color: #0a3d62;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+
+  /* OTP message style */
+  p.otp-message {
+    font-weight: 700;
+    color: #0a3d62;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  /* Responsive */
+  @media (max-width: 450px) {
+    form {
+      margin: 20px;
+      padding: 30px 25px;
+    }
+  }
+</style>
+</head>
+<body>
+
 <form method="post">
+    <h1>Login</h1>
     {% csrf_token %}
-    
+
     {% if login_form %}
         {{ login_form.as_p }}
         <button type="submit">Login</button>
     {% elif otp_form %}
-        <p>OTP sent to email. Please enter OTP.</p>
+        <p class="otp-message">OTP sent to your email. Please enter OTP below.</p>
         {{ otp_form.as_p }}
-        <p>type 3773.</p>
+        <p style="text-align:center; color:#555; font-size:0.9rem;">(type 3773 for testing)</p>
         <button type="submit">Verify OTP</button>
     {% endif %}
-    
-    <p>Don't have an account? <a href="{% url 'accounts:register' %}">Register here</a></p>
+
+    <p style="text-align:center; margin-top: 20px;">
+      Don't have an account? <a href="{% url 'accounts:register' %}">Register here</a>
+    </p>
 </form>
+
+</body>
+</html>

@@ -1,30 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Loan List</title>
-</head>
-<body>
-    <h1>Your Loan Applications</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Loan Amount</th>
-                <th>Interest Rate</th>
-                <th>Loan Term (months)</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for loan in loans %}
-                <tr>
-                    <td>{{ loan.loan_amount }}</td>
-                    <td>{{ loan.interest_rate }}%</td>
-                    <td>{{ loan.loan_term }}</td>
-                    <td>{{ loan.status }}</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</body>
-</html>
+{% extends "accounts/base.html" %}
+
+{% block content %}
+  <h2>Your Loan Applications</h2>
+
+  {% if loans %}
+    <div class="table-container">
+      <table class="styled-table">
+          <thead>
+              <tr>
+                  <th>Loan Amount</th>
+                  <th>Interest Rate</th>
+                  <th>Loan Term (months)</th>
+                  <th>Status</th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for loan in loans %}
+                  <tr>
+                      <td>${{ loan.loan_amount }}</td>
+                      <td>{{ loan.interest_rate }}%</td>
+                      <td>{{ loan.loan_term }}</td>
+                      <td>{{ loan.status }}</td>
+                  </tr>
+              {% endfor %}
+          </tbody>
+      </table>
+    </div>
+  {% else %}
+    <p>No loan applications found.</p>
+  {% endif %}
+{% endblock %}

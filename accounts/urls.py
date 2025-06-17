@@ -1,5 +1,7 @@
 from django.urls import path
+from django.conf import settings
 from . import views
+from django.conf.urls.static import static
 
 app_name = 'accounts'  # This defines the namespace for this app
 
@@ -11,3 +13,6 @@ urlpatterns = [
     path('profile/', views.profile_view, name='profile'),  # URL for viewing the profile
     path('profile/edit/', views.profile_edit, name='profile_edit'),  # URL for editing the profile]
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

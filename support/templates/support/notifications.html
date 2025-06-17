@@ -1,24 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Notifications</title>
-</head>
-<body>
-    <h1>Your Notifications</h1>
+{% extends "accounts/base.html" %}
 
-    {% if notifications %}
-        <ul>
-            {% for notification in notifications %}
-                <li>{{ notification.message }} - {{ notification.created_at }}</li>
-            {% endfor %}
-        </ul>
-        <form method="post" action="{% url 'support:mark_notifications_read' %}">
-            {% csrf_token %}
-            <button type="submit">Mark all as read</button>
-        </form>
-    {% else %}
-        <p>No new notifications.</p>
-    {% endif %}
-</body>
-</html>
+{% block content %}
+  <h2>Your Notifications</h2>
+
+  {% if notifications %}
+    <ul class="notification-list">
+      {% for notification in notifications %}
+        <li>
+          <strong>{{ notification.message }}</strong>
+          <br>
+          <small>{{ notification.created_at|date:"Y-m-d H:i" }}</small>
+        </li>
+      {% endfor %}
+    </ul>
+
+    <form method="post" action="{% url 'support:mark_notifications_read' %}">
+      {% csrf_token %}
+      <button type="submit" class="mark-read-btn">Mark all as read</button>
+    </form>
+  {% else %}
+    <p>No new notifications.</p>
+  {% endif %}
+{% endblock %}

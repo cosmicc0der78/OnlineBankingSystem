@@ -1,15 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Submit Support Ticket</title>
-</head>
-<body>
-    <h1>Submit a Support Ticket</h1>
-    <form method="POST">
+{% extends "accounts/base.html" %}
+
+{% block content %}
+    <h2>Submit a Support Ticket</h2>
+  
+    <form method="POST" class="support-ticket">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Submit</button>
     </form>
-</body>
-</html>
+{% endblock %}
