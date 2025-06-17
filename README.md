@@ -66,7 +66,7 @@ OnlineBankingSystem/
 
 ```bash
 git clone https://github.com/cosmicc0der78/OnlineBankingSystem.git
-cd online-banking-django
+cd OnlineBankingSystem
 ```
 
 ### 2️⃣ Create and activate a virtual environment:
