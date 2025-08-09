@@ -110,7 +110,7 @@ Visit http://127.0.0.1:8000
 
 ## ✍️ Author
 
-**Indu Sree Nanapu**  [GitHub](https://github.com/cosmicc0der78)      [Email](mailto:indusreen78@gmail.com)
+**Indu Sree.N**  [GitHub](https://github.com/cosmicc0der78)      [Email](mailto:indusreen78@gmail.com)
 
 > 📢 I'm open to collaborations, feedback, and contributing to exciting open-source adventures.  
 > If you have ideas, suggestions, or just want to connect—feel free to reach out!
